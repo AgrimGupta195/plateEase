@@ -3,10 +3,12 @@ const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./lib/db');
 const userAuthRoutes = require('./routes/userAuthRoutes');
+const itemRoutes = require('./routes/itemRoutes');
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use("/api/userAuth",userAuthRoutes);
+app.use("/api/items",itemRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   connectDB();
