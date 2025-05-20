@@ -1,0 +1,10 @@
+const express = require('express');
+const { addProduct, getAllProducts, deleteProduct, getProductsByCategory, toggleStock } = require('../controllers/itemController');
+const { isAdmin, authUser } = require('../middlewares/checkUser');
+const router = express.Router();
+router.post('/addItems',authUser,isAdmin,addProduct);
+router.get('/getItems',getAllProducts);
+router.delete('/deleteItems/:id',authUser,isAdmin,deleteProduct);
+router.get('/getItemsByCategory/:category',getProductsByCategory);
+router.patch('/toggleStock/:id',authUser,isAdmin,toggleStock);
+module.exports = router;
