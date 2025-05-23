@@ -23,10 +23,23 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    address: {
-        type: [String],
-        default: [],
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user",
     },
+    cartItems: [
+			{
+				quantity: {
+					type: Number,
+					default: 1,
+				},
+				product: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "Item",
+				},
+			},
+		],
 },{
     timestamps:true,
 });

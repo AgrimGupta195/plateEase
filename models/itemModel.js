@@ -15,6 +15,7 @@ const itemSchema = new mongoose.Schema({
     },
     category: {
         type: String,
+        enums:["Beverages","Desserts","Chinese","Daily Specials","BestSellers","Snacks"],
         required: true,
     },
     images: {
